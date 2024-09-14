@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>AWS Management Menu</title>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+		<style></style>
+	</head>
+	<body>
+		<h1 class="header">AWS Management Menu</h1>
+		<div class="container button-container">
+			<a class="btn custom-btn" href="{{ url_for('ec2_list.list_ec2') }}">List Instances</a>
+			<a class="btn custom-btn" href="{{ url_for('ec2.launch_ec2') }}">Launch EC2 Instance</a>
+			<a class="btn custom-btn" href="{{ url_for('gui.launch_gui_page') }}">Launch RHEL GUI</a>
+
+			<a class="btn custom-btn" href="{{ url_for('s3_upload.home') }}">Upload to S3</a>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	</body>
+</html>

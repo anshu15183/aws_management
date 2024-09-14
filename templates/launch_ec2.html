@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Launch EC2 Instance | AWS</title>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="{{ url_for('static', filename='css/launch_ec2.css') }}" rel="stylesheet" />
+		<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+		<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon_ec2.png') }}" />
+		<style></style>
+	</head>
+	<body>
+		<div id="overlay"></div>
+		<dotlottie-player
+			src="https://lottie.host/2513151b-e44a-4c3d-804a-2b53bab9f101/SpTRx0qhXd.json"
+			background="transparent"
+			speed="1"
+			style="width: 300px; height: 300px"
+			direction="1"
+			playMode="normal"
+			loop
+			autoplay
+			id="spinner"></dotlottie-player>
+		<div id="mainContent" class="container">
+			<a href="{{ url_for('home.index') }}">
+				<button id="homeButton" class="btn btn-light"><i class="fa fa-home"></i> Home</button>
+			</a>
+			<h1>Launch EC2 Instance</h1>
+			<form id="launchForm">
+				<div class="form-group">
+					<select id="region" name="region" class="form-control" required>
+						<option value="" disabled selected>Select a Region</option>
+						<option value="us-east-1">us-east-1 (N. Virginia)</option>
+						<option value="us-east-2">us-east-2 (Ohio)</option>
+						<option value="ap-south-1">ap-south-1 (Mumbai)</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<select id="instance_type" name="instance_type" class="form-control" required>
+						<option value="" disabled selected>Select an Instance Type</option>
+						<option value="t2.nano">t2.nano</option>
+						<option value="t2.micro">t2.micro (Free Tier)</option>
+						<option value="t2.small">t2.small</option>
+						<option value="t2.medium">t2.medium (General Purpose)</option>
+						<option value="m5.large">m5.large (Memory Optimized)</option>
+						<option value="c5.xlarge">c5.xlarge (Compute Optimized)</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<select id="ami_id" name="ami_id" class="form-control" required>
+						<option value="" disabled selected>Select an AMI ID</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<input type="text" id="instance_name" name="instance_name" class="form-control" placeholder="Enter Instance name" />
+				</div>
+
+				<div class="form-group">
+					<input type="text" id="key_pair" name="key_pair" class="form-control" required placeholder="Enter Key Pair Name" />
+					<input type="text" id="access_key_id" name="access_key_id" class="form-control" required placeholder="Enter AWS access_key_id" />
+
+					<input
+						type="password"
+						id="secret_access_key"
+						name="secret_access_key"
+						class="form-control"
+						required
+						placeholder="Enter AWS SECRET access_key" />
+				</div>
+
+				<input type="submit" value="Launch Instance" class="btn btn-success" />
+			</form>
+			<div id="message"></div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+		<script src="{{ url_for('static', filename='js/launch_ec2.js') }}"></script>
+		<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+	</body>
+</html>

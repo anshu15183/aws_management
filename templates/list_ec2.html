@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>EC2 Instances</title>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+		<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+		<link href="{{ url_for('static', filename='css/list_ec2.css') }}" rel="stylesheet" />
+	</head>
+	<body>
+		<div id="overlay"></div>
+		<dotlottie-player
+			src="https://lottie.host/2513151b-e44a-4c3d-804a-2b53bab9f101/SpTRx0qhXd.json"
+			background="transparent"
+			speed="1"
+			style="width: 300px; height: 300px"
+			direction="1"
+			playMode="normal"
+			loop
+			autoplay
+			id="spinner"></dotlottie-player>
+
+		<div class="container">
+			<div class="header">EC2 Instances</div>
+			<div class="refresh-section">
+				<div>
+					<a class="home-btn" href="{{ url_for('home.index') }}"> <i class="fas fa-home"></i></a>
+
+					<a class="home-btn" href="{{ url_for('ec2.launch_ec2') }}"> <i class="fas fa-plus"></i></a>
+					<select class="region-filter" id="regionFilter" onchange="filterInstancesByRegion()"></select>
+				</div>
+				<div class="timestamp-section">
+					<a class="home-btn" onclick="fetchInstances()">
+						<i class="fas fa-sync-alt"></i>
+					</a>
+					<div id="timestamp" class="timestamp">Last updated: Never</div>
+				</div>
+			</div>
+			<div class="table-container">
+				<table class="table table-striped table-bordered" id="instancesTable">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Instance ID</th>
+							<th>Instance State</th>
+							<th>Instance Type</th>
+							<th>Availability Zone</th>
+							<th>Public DNS</th>
+							<th>Public IP</th>
+							<!--<th>SSH</th>-->
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+		<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+		<script src="{{ url_for('static', filename='js/list_ec2.js') }}"></script>
+	</body>
+</html>
